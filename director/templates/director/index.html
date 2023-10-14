@@ -3,323 +3,886 @@
 {% load my_custom_tags %}
 {%block style%}
 <style>
-.section {
-    padding: 100px 0;
-    position: relative;
+    body{
+    background:#f5f5f5;
+    margin-top:20px;}
+
+/* ===== Career ===== */
+.career-form {
+  background-color: #4e63d7;
+  border-radius: 5px;
+  padding: 0 16px;
 }
 
-.section-title h2 {
-    font-weight: 700;
-    color: #20247b;
-    font-size: 45px;
-    margin: 0 0 15px;
-    border-left: 5px solid #fc5356;
-    padding-left: 15px;
-}
-.section-title {
-    padding-bottom: 45px;
-}
-.section-title p {
-    margin: 0;
-    font-size: 18px;
+.career-form .form-control {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 0;
+  padding: 12px 15px;
+  color: #fff;
 }
 
-/* Resume Box
----------------------*/
-.resume-box {
-  box-shadow: 0 0 1.25rem rgba(31, 45, 61, 0.08);
+.career-form .form-control::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #fff;
+}
+
+.career-form .form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff;
+}
+
+.career-form .form-control:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #fff;
+}
+
+.career-form .form-control:-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff;
+}
+
+.career-form .custom-select {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 0;
+  padding: 12px 15px;
+  color: #fff;
+  width: 100%;
+  border-radius: 5px;
+  text-align: left;
+  height: auto;
+  background-image: none;
+}
+
+.career-form .custom-select:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.career-form .select-container {
+  position: relative;
+}
+
+.career-form .select-container:before {
+  position: absolute;
+  right: 15px;
+  top: calc(50% - 14px);
+  font-size: 18px;
+  color: #ffffff;
+  content: '\F2F9';
+  font-family: "Material-Design-Iconic-Font";
+}
+
+.filter-result .job-box {
+background:#fff;
+  -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+          box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
   border-radius: 10px;
+  padding: 10px 35px;
 }
-.resume-box ul {
-  margin: 0;
-  padding: 30px 20px;
+
+ul {
   list-style: none;
 }
-.resume-box li {
-  position: relative;
-  padding: 0 20px 0 60px;
-  margin: 0 0 30px;
+
+.list-disk li {
+  list-style: none;
+  margin-bottom: 12px;
 }
-.resume-box li:last-child {
+
+.list-disk li:last-child {
   margin-bottom: 0;
 }
-.resume-box li:after {
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: 20px;
-  border-left: 1px dashed #fc5356;
-  bottom: 0;
-}
-.resume-box .icon {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  color: #fc5356;
-  line-height: 40px;
-  background: #ffffff;
-  text-align: center;
-  z-index: 1;
-  border: 1px dashed;
-  border-radius: 50%;
-}
-.resume-box .time {
-  background: #fc5356;
-  color: #ffffff;
-  font-size: 10px;
-  padding: 2px 10px;
-  display: inline-block;
-  margin-bottom: 12px;
-  border-radius: 20px;
-  font-weight: 600;
-}
-.resume-box h5 {
+
+.job-box .img-holder {
+  height: 65px;
+  width: 65px;
+  background-color: #4e63d7;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(78, 99, 215, 0.9)), to(#5a85dd));
+  background-image: linear-gradient(to right, rgba(78, 99, 215, 0.9) 0%, #5a85dd 100%);
+  font-family: "Open Sans", sans-serif;
+  color: #fff;
+  font-size: 22px;
   font-weight: 700;
-  color: #20247b;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-.resume-box p {
-  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 65px;
 }
 
-.resume-box li:after {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 20px;
-    border-left: 1px dashed #fc5356;
-    bottom: 0;
+.career-title {
+  background-color: #4e63d7;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(78, 99, 215, 0.9)), to(#5a85dd));
+  background-image: linear-gradient(to right, rgba(78, 99, 215, 0.9) 0%, #5a85dd 100%);
+}
+
+.job-overview {
+  -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+          box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+  border-radius: 10px;
+}
+
+@media (min-width: 992px) {
+  .job-overview {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 70px;
+  }
+}
+
+.job-overview .job-detail ul {
+  margin-bottom: 28px;
+}
+
+.job-overview .job-detail ul li {
+  opacity: 0.75;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.job-overview .job-detail ul li i {
+  font-size: 20px;
+  position: relative;
+  top: 1px;
+}
+
+.job-overview .overview-bottom,
+.job-overview .overview-top {
+  padding: 35px;
+}
+
+.job-content ul li {
+  font-weight: 600;
+  opacity: 0.75;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 5px;
+}
+
+@media (min-width: 768px) {
+  .job-content ul li {
+    border-bottom: 0;
+    padding: 0;
+  }
+}
+
+.job-content ul li i {
+  font-size: 20px;
+  position: relative;
+  top: 1px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
 }
 </style>
+<style>
+    body{
+    margin-top:20px;
+    background:#eee;
+}
 
+.product-content {
+    border: 2px solid #dfe5e9;
+    margin-bottom: 20px;
+    margin-top: 12px;
+    background: #fff;
+    padding: 4px;
+        -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+}
+
+.product-content .carousel-control.left {
+    margin-left: 0
+}
+
+.product-content .product-image {
+    background-color: #fff;
+    display: block;
+    min-height: 238px;
+    overflow: hidden;
+    position: relative
+}
+
+.product-content .product-deatil {
+    border-bottom: 1px solid #dfe5e9;
+    padding-bottom: 17px;
+    padding-left: 16px;
+    padding-top: 16px;
+    position: relative;
+    background: #fff
+}
+
+.product-content .product-deatil h5 a {
+    color: #2f383d;
+    font-size: 15px;
+    line-height: 19px;
+    text-decoration: none;
+    padding-left: 0;
+    margin-left: 0
+}
+
+.product-content .product-deatil h5 a span {
+    color: #9aa7af;
+    display: block;
+    font-size: 13px
+}
+
+.product-content .product-deatil span.tag1 {
+    border-radius: 50%;
+    color: #fff;
+    font-size: 15px;
+    height: 50px;
+    padding: 13px 0;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: 10px;
+    width: 50px
+}
+
+.product-content .product-deatil span.sale {
+    background-color: #21c2f8
+}
+
+.product-content .product-deatil span.discount {
+    background-color: #71e134
+}
+
+.product-content .product-deatil span.hot {
+    background-color: #fa9442
+}
+
+.product-content .description {
+    font-size: 12.5px;
+    line-height: 20px;
+    padding: 10px 14px 16px 19px;
+    background: #fff
+}
+
+.product-content .product-info {
+    padding: 11px 19px 10px 20px
+}
+
+.product-content .product-info a.add-to-cart {
+    color: #2f383d;
+    font-size: 13px;
+    padding-left: 16px
+}
+
+.product-content name.a {
+    padding: 5px 10px;
+    margin-left: 16px
+}
+
+.product-info.smart-form .btn {
+    padding: 6px 12px;
+    margin-left: 12px;
+    margin-top: -10px
+}
+
+.product-entry .product-deatil {
+    border-bottom: 1px solid #dfe5e9;
+    padding-bottom: 17px;
+    padding-left: 16px;
+    padding-top: 16px;
+    position: relative
+}
+
+.product-entry .product-deatil h5 a {
+    color: #2f383d;
+    font-size: 15px;
+    line-height: 19px;
+    text-decoration: none
+}
+
+.product-entry .product-deatil h5 a span {
+    color: #9aa7af;
+    display: block;
+    font-size: 13px
+}
+
+.load-more-btn {
+    background-color: #21c2f8;
+    border-bottom: 2px solid #037ca5;
+    border-radius: 2px;
+    border-top: 2px solid #0cf;
+    margin-top: 20px;
+    padding: 9px 0;
+    width: 100%
+}
+
+.product-block .product-deatil p.price-container span,
+.product-content .product-deatil p.price-container span,
+.product-entry .product-deatil p.price-container span,
+.shipping table tbody tr td p.price-container span,
+.shopping-items table tbody tr td p.price-container span {
+    color: #21c2f8;
+    font-family: Lato, sans-serif;
+    font-size: 24px;
+    line-height: 20px
+}
+
+.product-info.smart-form .rating label {
+    margin-top: 0
+}
+
+.product-wrap .product-image span.tag2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 11px;
+    text-align: center
+}
+
+.product-wrap .product-image span.sale {
+    background-color: #57889c
+}
+
+.product-wrap .product-image span.hot {
+    background-color: #a90329
+}
+
+.shop-btn {
+    position: relative
+}
+
+.shop-btn>span {
+    background: #a90329;
+    display: inline-block;
+    font-size: 10px;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+    font-weight: 700;
+    border-radius: 50%;
+    padding: 2px 4px 3px!important;
+    text-align: center;
+    line-height: normal;
+    width: 19px;
+    top: -7px;
+    left: -7px
+}
+
+.description-tabs {
+    padding: 30px 0 5px!important
+}
+
+.description-tabs .tab-content {
+    padding: 10px 0
+}
+
+.product-deatil {
+    padding: 30px 30px 50px
+}
+
+.product-deatil hr+.description-tabs {
+    padding: 0 0 5px!important
+}
+
+.product-deatil .carousel-control.left,
+.product-deatil .carousel-control.right {
+    background: none!important
+}
+
+.product-deatil .glyphicon {
+    color: #3276b1
+}
+
+.product-deatil .product-image {
+    border-right: 0px solid #fff !important
+}
+
+.product-deatil .name {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.product-deatil .name small {
+    display: block
+}
+
+.product-deatil .name a {
+    margin-left: 0
+}
+
+.product-deatil .price-container {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 300
+}
+
+.product-deatil .price-container small {
+    font-size: 12px
+}
+
+.product-deatil .fa-2x {
+    font-size: 16px!important
+}
+
+.product-deatil .fa-2x>h5 {
+    font-size: 12px;
+    margin: 0
+}
+
+.product-deatil .fa-2x+a,
+.product-deatil .fa-2x+a+a {
+    font-size: 13px
+}
+
+.product-deatil .certified {
+    margin-top: 10px
+}
+
+.product-deatil .certified ul {
+    padding-left: 0
+}
+
+.product-deatil .certified ul li:not(first-child) {
+    margin-left: -3px
+}
+
+.product-deatil .certified ul li {
+    display: inline-block;
+    background-color: #f9f9f9;
+    padding: 13px 19px
+}
+
+.product-deatil .certified ul li:first-child {
+    border-right: none
+}
+
+.product-deatil .certified ul li a {
+    text-align: left;
+    font-size: 12px;
+    color: #6d7a83;
+    line-height: 16px;
+    text-decoration: none
+}
+
+.product-deatil .certified ul li a span {
+    display: block;
+    color: #21c2f8;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center
+}
+
+.product-deatil .message-text {
+    width: calc(100% - 70px)
+}
+
+@media only screen and (min-width:1024px) {
+    .product-content div[class*=col-md-4] {
+        padding-right: 0
+    }
+    .product-content div[class*=col-md-8] {
+        padding: 0 13px 0 0
+    }
+    .product-wrap div[class*=col-md-5] {
+        padding-right: 0
+    }
+    .product-wrap div[class*=col-md-7] {
+        padding: 0 13px 0 0
+    }
+    .product-content .product-image {
+        border-right: 1px solid #dfe5e9
+    }
+    .product-content .product-info {
+        position: relative
+    }
+}
+</style>
 
 {%endblock%}
 
 {% block content %}
 
 <div class="content-wrapper">
-     <div class="row">
-    <div class="main-body">
-          <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-            </ol>
-          </nav>
-          <!-- /Breadcrumb -->
-
-          <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-              <div class="card">
+     <div class="card">
                 <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                    <div class="mt-3">
-                      <h4>John Doe</h4>
-                      <p class="text-secondary mb-1">Full Stack Developer</p>
-                      <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card mt-3">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
-                    <span class="text-secondary">https://bootdey.com</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github mr-2 icon-inline"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>Github</h6>
-                    <span class="text-secondary">bootdey</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>Twitter</h6>
-                    <span class="text-secondary">@bootdey</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
-                    <span class="text-secondary">bootdey</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
-                    <span class="text-secondary">bootdey</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="card mt-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3">Skills</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Website Markup</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>One Page</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Mobile Template</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Backend API</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="card mt-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3">Summary</h6>
-                      <p>Along with your plans, you should consider developing an action orientation that will keep you motivated to move forward at all times. This requires a little self-discipline, but is a crucial component to achievement of any kind. Before starting any new activity, ask yourself if that activity will move you closer to your goals. If the answer is no, you may want to reconsider doing it at that time.</p>
+                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+
+<div class="container">
+            <div class="row">
+                 <div class="col-lg-10 mx-auto mb-4">
+                    <div class="section-title text-center ">
+                        <h3 class="top-c-sep">Recommended Jobs For You</h3>
 
                     </div>
-                  </div>
-              </div>
+                </div>
             </div>
-            <div class="col-md-8">
-              <div class="card mb-3">
 
-                <div class="card-body">
-                    <h4 class="d-flex align-items-center mb-3">Contact Details</h4>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Full Name</h6>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="career-search mb-60">
+
+                        <form action="#" class="career-form mb-60">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-3 my-3">
+                                    <div class="input-group position-relative">
+                                        <input type="text" class="form-control" placeholder="Enter Your Keywords" id="keywords">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 my-3">
+                                    <div class="select-container">
+                                        <select class="custom-select">
+                                            <option selected="">Location</option>
+                                            <option value="1">Jaipur</option>
+                                            <option value="2">Pune</option>
+                                            <option value="3">Bangalore</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 my-3">
+                                    <div class="select-container">
+                                        <select class="custom-select">
+                                            <option selected="">Select Job Type</option>
+                                            <option value="1">Ui designer</option>
+                                            <option value="2">JS developer</option>
+                                            <option value="3">Web developer</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 my-3">
+                                    <button type="button" class="btn btn-lg btn-block btn-light btn-custom" id="contact-submit">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="filter-result">
+                            <p class="mb-30 ff-montserrat">Total Job Openings : 89</p>
+
+                            <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
+                                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                                    <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                        FD
+                                    </div>
+                                    <div class="job-content">
+                                        <h5 class="text-center text-md-left">Front End Developer</h5>
+                                        <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-pin mr-2"></i> Los Angeles
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-money mr-2"></i> 2500-3500/pm
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-time mr-2"></i> Full Time
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="job-right my-4 flex-shrink-0">
+                                    <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>
+                                </div>
+                            </div>
+
+                            <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
+                                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                                    <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                        UX
+                                    </div>
+                                    <div class="job-content">
+                                        <h5 class="text-center text-md-left">Ui/Ux Developer</h5>
+                                        <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-pin mr-2"></i> Los Angeles
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-money mr-2"></i> 2500-3500/pm
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-time mr-2"></i> Full Time
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="job-right my-4 flex-shrink-0">
+                                    <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>
+                                </div>
+                            </div>
+
+                            <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
+                                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                                    <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                        GD
+                                    </div>
+                                    <div class="job-content">
+                                        <h5 class="text-center text-md-left">Graphic Designer</h5>
+                                        <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-pin mr-2"></i> Los Angeles
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-money mr-2"></i> 2500-3500/pm
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-time mr-2"></i> Full Time
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="job-right my-4 flex-shrink-0">
+                                    <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>
+                                </div>
+                            </div>
+
+                            <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
+                                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                                    <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                        JS
+                                    </div>
+                                    <div class="job-content">
+                                        <h5 class="text-center text-md-left">Javascript Developer</h5>
+                                        <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-pin mr-2"></i> Los Angeles
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-money mr-2"></i> 2500-3500/pm
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-time mr-2"></i> Full Time
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="job-right my-4 flex-shrink-0">
+                                    <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      Kenneth Valdez
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Email</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      fip@jukmuh.al
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Phone</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      (239) 816-9029
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Mobile</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      (320) 380-4539
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Address</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      Bay Area, San Francisco, CA
-                    </div>
-                  </div>
-                  <hr>
+
+                    <!-- START Pagination -->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination pagination-reset justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                    <i class="zmdi zmdi-long-arrow-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item d-none d-md-inline-block"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item d-none d-md-inline-block"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#">8</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="zmdi zmdi-long-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- END Pagination -->
                 </div>
-              </div>
-              <div class="card mb-3">
-                  <div class="resume-box">
-
-                            <ul>
-
-                  <h4 class="d-flex align-items-center mb-3">Work Experience</h4>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fas fa-user-graduate"></i>
-                                    </div>
-                                    <span class="time">2019 - Present</span>
-                                    <h5>Art Director - Facebook Inc</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fas fa-user-graduate"></i>
-                                    </div>
-                                    <span class="time">2019 - Present</span>
-                                    <h5>Art Director - Facebook Inc</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fas fa-user-graduate"></i>
-                                    </div>
-                                    <span class="time">2019 - Present</span>
-                                    <h5>Art Director - Facebook Inc</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </li>
-                            </ul>
-                        </div>
-
-              </div>
-              <div class="card mb-3">
-                  <div class="resume-box">
-                            <ul>
-
-                  <h4 class="d-flex align-items-center mb-3">Education</h4>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fas fa-user-graduate"></i>
-                                    </div>
-                                    <span class="time">2019 - Present</span>
-                                    <h5>Art Director - Facebook Inc</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fas fa-user-graduate"></i>
-                                    </div>
-                                    <span class="time">2019 - Present</span>
-                                    <h5>Art Director - Facebook Inc</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fas fa-user-graduate"></i>
-                                    </div>
-                                    <span class="time">2019 - Present</span>
-                                    <h5>Art Director - Facebook Inc</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </li>
-                            </ul>
-                        </div>
-              </div>
-
-
-
-
             </div>
-          </div>
 
-              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                  <button type="button" class="btn btn-info">Download</button>
-                  <button type="button" class="btn btn-warning">Edit</button>
-                  <button type="button" class="btn btn-danger">Delete</button>
-                </div>
         </div>
+                </div>
+              </div>
+    <br>
+   <div class="card">
+                <div class="card-body">
+                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
 
-     </div>
+<div class="container">
+            <div class="row">
+                 <div class="col-lg-10 mx-auto mb-4">
+                    <div class="section-title text-center ">
+                        <h3 class="top-c-sep">Recommended Courses For You</h3>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="career-search mb-60">
+
+                        <form action="#" class="career-form mb-60">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-3 my-3">
+                                    <div class="input-group position-relative">
+                                        <input type="text" class="form-control" placeholder="Enter Your Keywords" id="keywords">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 my-3">
+                                    <div class="select-container">
+                                        <select class="custom-select">
+                                            <option selected="">Location</option>
+                                            <option value="1">Jaipur</option>
+                                            <option value="2">Pune</option>
+                                            <option value="3">Bangalore</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 my-3">
+                                    <div class="select-container">
+                                        <select class="custom-select">
+                                            <option selected="">Select Job Type</option>
+                                            <option value="1">Ui designer</option>
+                                            <option value="2">JS developer</option>
+                                            <option value="3">Web developer</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 my-3">
+                                    <button type="button" class="btn btn-lg btn-block btn-light btn-custom" id="contact-submit">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="filter-result">
+                            <p class="mb-30 ff-montserrat">Total Job Openings : 89</p>
+
+                            <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
+                                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                                    <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                        FD
+                                    </div>
+                                    <div class="job-content">
+                                        <h5 class="text-center text-md-left">Front End Developer</h5>
+                                        <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-pin mr-2"></i> Los Angeles
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-money mr-2"></i> 2500-3500/pm
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-time mr-2"></i> Full Time
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="job-right my-4 flex-shrink-0">
+                                    <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>
+                                </div>
+                            </div>
+
+                            <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
+                                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                                    <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                        UX
+                                    </div>
+                                    <div class="job-content">
+                                        <h5 class="text-center text-md-left">Ui/Ux Developer</h5>
+                                        <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-pin mr-2"></i> Los Angeles
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-money mr-2"></i> 2500-3500/pm
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-time mr-2"></i> Full Time
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="job-right my-4 flex-shrink-0">
+                                    <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>
+                                </div>
+                            </div>
+
+                            <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
+                                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                                    <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                        GD
+                                    </div>
+                                    <div class="job-content">
+                                        <h5 class="text-center text-md-left">Graphic Designer</h5>
+                                        <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-pin mr-2"></i> Los Angeles
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-money mr-2"></i> 2500-3500/pm
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-time mr-2"></i> Full Time
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="job-right my-4 flex-shrink-0">
+                                    <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>
+                                </div>
+                            </div>
+
+                            <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
+                                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                                    <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                        JS
+                                    </div>
+                                    <div class="job-content">
+                                        <h5 class="text-center text-md-left">Javascript Developer</h5>
+                                        <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-pin mr-2"></i> Los Angeles
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-money mr-2"></i> 2500-3500/pm
+                                            </li>
+                                            <li class="mr-md-4">
+                                                <i class="zmdi zmdi-time mr-2"></i> Full Time
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="job-right my-4 flex-shrink-0">
+                                    <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- START Pagination -->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination pagination-reset justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                    <i class="zmdi zmdi-long-arrow-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item d-none d-md-inline-block"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item d-none d-md-inline-block"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#">8</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="zmdi zmdi-long-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- END Pagination -->
+                </div>
+            </div>
+
+        </div>
+                </div>
+              </div>
 </div>
 {% endblock %}
 {% block script %}
